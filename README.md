@@ -1,4 +1,4 @@
-# This is a Web-based Learning Management System website that uses Standard Based Grading. 
+# Web-based Learning Management website that uses Standard Based Grading. 
 
 Web Framework: Flask  
 Backend Functions: Python, Javascript  
