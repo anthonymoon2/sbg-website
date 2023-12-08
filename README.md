@@ -1,8 +1,7 @@
 # Web-based Learning Management website that uses Standard Based Grading. 
 
 Web Framework: Flask  
-Backend: Python, Javascript  
-FrontEnd: HTML, CSS  
+Python, Javascript, HTML, CSS, BootStrap
 
 ### HOW THE WEBSITE WORKS
 - Create a teacher or student account by signing up
