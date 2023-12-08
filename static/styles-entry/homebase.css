@@ -200,3 +200,33 @@ body{
   background-color: white;
   color: rgba(0,39,88,255);
 } 
+
+@media only screen and (max-width: 768px) {
+  .title-container {
+    grid-template-columns: 1fr;
+  }
+
+  .title-container-left, .title-container-right {
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .title-container-left-heading {
+    font-size: 30px;
+  }
+
+  .title-container-left-description, .steps-containers-inner-left-desc, .three-blocks-container-bottom-desc {
+    font-size: 16px;
+  }
+
+  .btn-custom, .btn-outline-custom {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  img {
+    min-width: 100%;
+    min-width: 50%;
+    height: auto;
+  }
+}
