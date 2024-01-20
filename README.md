@@ -3,7 +3,7 @@
 Web Framework: Flask  
 Python, Javascript, HTML, CSS, BootStrap
 
-### HOW THE WEBSITE WORKS
+### FUNCTIONS
 - Create a teacher or student account by signing up
 - Sign in using the email you used to create the account
 - Account (Teacher):
