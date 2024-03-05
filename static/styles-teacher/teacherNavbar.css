@@ -5,7 +5,6 @@
   border-radius: 25px;
   border-style: solid;
   border-color: rgb(179, 179, 179);
-  box-shadow: 0px 1px 8px rgb(7, 7, 7);
 }
 
 .logo-description{
@@ -17,7 +16,6 @@
 
 .mainLogo{
   height: 60px;
-  box-shadow: 0px 1px 8px rgb(7, 7, 7);
 }
 
 .logo-profile{

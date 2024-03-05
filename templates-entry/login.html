@@ -15,14 +15,6 @@
 {% endblock %}
 
 {% block content %}
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-  {% for msg in messages %}
-    <p>{{msg}}</p>
-  {% endfor%}
-{% endif %}
-{% endwith %}
-
 <div class="parent-container">
   <div class="login-container">
     <form action="#" method="post">
@@ -37,7 +29,7 @@
           type="email" 
           id="email"
           name="email" 
-          placeholder="Enter email"
+          placeholder="Enter Email"
         />
       </div>
   
@@ -58,8 +50,14 @@
           value="LOGIN"
         />
       </div>
+
+      <div class="demo-desc">
+        Demo account: demoTeacher@example.com / password: demo123
+      </div>
     </form>
   </div>
 </div>
+
+
 
 {% endblock %}

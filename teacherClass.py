@@ -18,13 +18,13 @@ def teacherProfile():
   if user_is_teacher():
     return render_template("teacherProfile.html", name=current_user.name, email=current_user.email)
   else:
-    flash("Access denied: You do not have permission to view this page.")
+    flash("Access denied: You do not have permission to view this page.", "error")
     return redirect(url_for("entry.login"))
 
 @teacherClass.route("/teacherClassManagement", methods=['GET', 'POST'])
 def teacherClassManagement():
   if not user_is_teacher():
-    flash("Access denied: You do not have permission to view this page.")
+    flash("Access denied: You do not have permission to view this page.", "error")
     return redirect(url_for("entry.login"))
 
   if request.method == 'POST':
@@ -33,12 +33,12 @@ def teacherClassManagement():
     if action == 'addClass':
       teacherClass = request.form.get('schoolClass')
       if teacherClass is None or len(teacherClass) < 1:
-        flash('Class name is too short!')
+        flash('Class name is too short!', "error")
       else: 
         new_class = schoolClasses(className=teacherClass, teacher=current_user.id)
         db.session.add(new_class)
         db.session.commit()
-        flash('New class added!')
+        flash('New class added!', "success")
 
     elif action == 'deleteClass':
       classToDeleteID = request.form.get("classIdToDelete")
@@ -47,9 +47,9 @@ def teacherClassManagement():
       if classToDelete:
         db.session.delete(classToDelete)
         db.session.commit()
-        flash('Class deleted successfully.')
+        flash('Class deleted successfully', "success")
       else:
-        flash('Class not found.')
+        flash('Class not found.', "error")
         
   classes = schoolClasses.query.filter_by(teacher=current_user.id).all()
   return render_template("teacherClassManagement.html", user=current_user, schoolClasses=classes)
@@ -72,6 +72,7 @@ def classPageAssignmentsT(class_id):
       new_assignment = assignment(name=assignment_name, class_id=class_id)
       db.session.add(new_assignment)
       db.session.commit()
+      flash('Assignment created successfully', "success")
       return redirect(url_for('teacherClass.classPageAssignmentsT', class_id=class_id))
     
     elif action == "deleteAssignment":
@@ -81,6 +82,7 @@ def classPageAssignmentsT(class_id):
         assignment_to_delete = assignment.query.get(assignment_id_to_delete)
         if assignment_to_delete:
           db.session.delete(assignment_to_delete)
+          flash("Assignment deleted successfully", "success")
           db.session.commit()
     return redirect(url_for('teacherClass.classPageAssignmentsT', class_id=class_id))
   
@@ -104,9 +106,9 @@ def classPageStudentsT(class_id):
         enrollment = StudentClassAssociation(student_id=currentStudent, class_id=class_id)
         db.session.add(enrollment)
         db.session.commit()
-        flash("Student added successfully!")
+        flash("Student added successfully", "success")
       else:
-        flash("Student is already enrolled in this class.", "warning")
+        flash("Student is already enrolled in this class.", "error")
 
     # when the teacher clicks delete student
     elif action == "deleteStudentFromClass":
@@ -117,9 +119,9 @@ def classPageStudentsT(class_id):
       if studentEnrollmentCheck:
         db.session.delete(studentEnrollmentCheck)
         db.session.commit()
-        flash("Student deleted from class successfully.")
+        flash("Student deleted from class successfully", "success")
       else:
-        flash("Student is not enrolled in this class.")
+        flash("Student is not enrolled in this class", "error")
 
   listStudents = users.query.filter_by(accountType="Student").all()
   listCurrStudents = users.query.join(StudentClassAssociation, users.id == StudentClassAssociation.student_id).filter(StudentClassAssociation.class_id == class_id).all() 

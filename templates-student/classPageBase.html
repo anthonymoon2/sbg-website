@@ -78,6 +78,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <script>
+      // drop down for adding student to class functionality
       document.addEventListener('DOMContentLoaded', function () {
         var dropdownItemsAdd = document.querySelectorAll('.dropdown-item-add');
         var dropdownButtonAdd = document.getElementById('dropdownMenuButtonAdd');
@@ -96,7 +97,9 @@
         var dropdownItemsDelete = document.querySelectorAll('.dropdown-item-delete');
         var dropdownButtonDelete = document.getElementById('dropdownMenuButtonDelete');
         var hiddenInputDelete = document.getElementById('studentIdToDelete');
+        
 
+        // drop down for students to delete from class functionality
         dropdownItemsDelete.forEach(function(item) {
           item.addEventListener('click', function(event) {
             event.preventDefault(); 

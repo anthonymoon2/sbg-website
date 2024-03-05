@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles-teacher/teacherClassManagement.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles-shared/homepage.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles-shared/profile.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles-shared/flashMessages.css')}}">
     
   </head>
   <body>
@@ -44,6 +45,14 @@
       </div>
     </nav>
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
 
     {% block content %}
     {% endblock %}
@@ -60,7 +69,7 @@
     
         dropdownItems.forEach(function(item) {
           item.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default anchor behavior
+            event.preventDefault(); // Prevent default behavior
     
             // Update dropdown button text
             var selectedClassName = this.textContent;

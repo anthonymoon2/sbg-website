@@ -15,7 +15,6 @@
 
 
 {% block content %} 
-
   <div class="title-container">
     <div class="title-container-left">
       <div class="title-container-left-heading">
@@ -26,9 +25,11 @@
         The future of the grading system, using standard based grading
       </div>
 
-      <a class="btn btn-custom btn-lg" href="/entry/signup" role="button">Sign Up Now</a>
+      <div class="buttons-container">
+        <a class="btn btn-custom btn-lg" href="/entry/signup" role="button">Sign Up Now</a>
 
-      <button id="learn-more-btn" type="button" class="btn btn-outline-custom btn-lg">Learn More  ↓</button>
+        <button id="learn-more-btn" type="button" class="btn btn-outline-custom btn-lg">Learn More  ↓</button>
+      </div>
     </div>
     <div class="title-container-right">
       <image class="homepage-image-main" src="{{ url_for('static', filename='images/sbgpic.png')}}"></image>
@@ -41,81 +42,58 @@
     </div>
   </div>
 
-  <div class="steps-containers">
-    <div class="steps-containers-inner">
-      <div class="steps-containers-inner-left">
-        <div class="steps-containers-inner-left-num">
-          01
-        </div>
-        <div class="steps-containers-inner-left-desc">
-          Sign Up as a Teacher and Login
-        </div>
-
-      </div> 
-      <div class="steps-containers-inner-right">
+  <div class="second-container">
+    <div class="instructions-container">
+      <div class="instructions-container-left">
+        <div class="instructions-container-num">01</div>
+        <div class="instructions-container-desc">Sign Up as a Teacher and Login</div>
+      </div>
+      <div class="instructions-container-right">
         <image class="homepage-images" src="{{ url_for('static', filename='images/step1.png')}}"></image>
       </div>
     </div>
 
-    <div class="steps-containers-inner">
-      <div class="steps-containers-inner-left">
-        <div class="steps-containers-inner-left-num">
-          02
-        </div>
-        <div class="steps-containers-inner-left-desc">
-          Create/Delete Classes in the Manage Section
-        </div>
-
-      </div> 
-      <div class="steps-containers-inner-right">
+    <div class="instructions-container">
+      <div class="instructions-container-left">
+        <div class="instructions-container-num">02</div>
+        <div class="instructions-container-desc">Create/Delete Classes in the Manage Section</div>
+      </div>
+      <div class="instructions-container-right">
         <image class="homepage-images" src="{{ url_for('static', filename='images/step2.png')}}"></image>
       </div>
     </div>
 
-    <div class="steps-containers-inner">
-      <div class="steps-containers-inner-left">
-        <div class="steps-containers-inner-left-num">
-          03
-        </div>
-        <div class="steps-containers-inner-left-desc">
-          Added Classes will show on the Home Dashboard
-        </div>
-
-      </div> 
-      <div class="steps-containers-inner-right">
+    <div class="instructions-container">
+      <div class="instructions-container-left">
+        <div class="instructions-container-num">03</div>
+        <div class="instructions-container-desc">Sign Up as a Teacher and Login</div>
+      </div>
+      <div class="instructions-container-right">
         <image class="homepage-images" src="{{ url_for('static', filename='images/step3.png')}}"></image>
       </div>
     </div>
 
-    <div class="steps-containers-inner">
-      <div class="steps-containers-inner-left">
-        <div class="steps-containers-inner-left-num">
-          04
-        </div>
-        <div class="steps-containers-inner-left-desc">
-          Select the desired class and add/delete students
-        </div>
-
-      </div> 
-      <div class="steps-containers-inner-right">
+    <div class="instructions-container">
+      <div class="instructions-container-left">
+        <div class="instructions-container-num">04</div>
+        <div class="instructions-container-desc">Select the desired class and add/delete students</div>
+      </div>
+      <div class="instructions-container-right">
         <image class="homepage-images" src="{{ url_for('static', filename='images/step4.png')}}"></image>
       </div>
     </div>
 
-    <div class="steps-containers-inner">
-      <div class="steps-containers-inner-left">
-        <div class="steps-containers-inner-left-num">
-          05
-        </div>
-        <div class="steps-containers-inner-left-desc">
-          Add/Delete Assignments
-        </div>
-
-      </div> 
-      <div class="steps-containers-inner-right">
+    <div class="instructions-container">
+      <div class="instructions-container-left">
+        <div class="instructions-container-num">05</div>
+        <div class="instructions-container-desc">Add/Delete Assignments</div>
+      </div>
+      <div class="instructions-container-right">
         <image class="homepage-images" src="{{ url_for('static', filename='images/step5.png')}}"></image>
       </div>
     </div>
+
+
   </div>
 
   <div class="third-container">

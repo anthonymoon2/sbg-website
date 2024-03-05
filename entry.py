@@ -15,7 +15,7 @@ def login():
 
     if found_user:
       if check_password_hash(found_user.password, password):
-        flash("Login Successful.")
+        flash("Login Successful.", "success")
         login_user(found_user, remember=True)
         # Check the account type and redirect accordingly
         if found_user.accountType == 'Teacher':
@@ -23,9 +23,9 @@ def login():
         else:  # Assume other account types are students for now
           return redirect(url_for("studentClass.studentHome"))
       else:
-        flash("Incorrect password.")
+        flash("Incorrect password.", "error")
     else:
-        flash("An account with this email does not exist!")
+        flash("An account with this email does not exist!", "error")
   return render_template("login.html")
 
 @entry.route("/signup", methods=["POST", "GET"])
@@ -38,27 +38,27 @@ def signup():
     accountType = request.form.get('accountType')
 
     if not all([email, name, password1, password2, accountType]):
-      flash("Please fill in all fields!")
+      flash("Please fill in all fields!", "error")
       return render_template("signup.html")
 
     user = users.query.filter_by(email=email).first()
     if user:
-      flash('Email already exists.', category='error')
+      flash('Email already exists.', "error")
     elif len(email) < 4:
-      flash('Email must be greater than 3 characters', category='error')
+      flash('Email must be greater than 3 characters', "error")
     elif len(name) < 1:
-      flash('First name must be greater than 1 character', category='error')
+      flash('First name must be greater than 1 character', "error")
     elif password1 != password2:
-      flash('Passwords don\'t match.', category='error')
+      flash('Passwords don\'t match.', "error")
     elif len(password1) < 7:
-      flash('Password must be at least 7 characters', category="error")
+      flash('Password must be at least 7 characters', "error")
 
     else:
       new_user = users(email=email, name=name, password=generate_password_hash(password1, method='pbkdf2:sha256'), accountType=accountType)
       db.session.add(new_user)
       db.session.commit()
       login_user(new_user, remember=True)
-      flash('Account created!', category='success')
+      flash('Account created!', "success")
       return redirect(url_for('entry.login'))
   return render_template("signup.html")
 
@@ -66,6 +66,7 @@ def signup():
 @login_required
 def logout():
   logout_user()
+  flash('Logged out', "success")
   return redirect(url_for('entry.login'))
 
 
