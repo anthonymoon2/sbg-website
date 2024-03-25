@@ -1,0 +1,33 @@
+.manage-header{
+  margin-left: 90px;
+  margin-top: 35px;
+  margin-bottom: 30px;
+}
+
+.management-container{
+  width: 290px;
+  margin-left: 95px;
+  margin-top: 30px;
+  display: flex;
+}
+
+.add-class-container, .delete-class-container{
+  padding-top: 10px;
+  padding-left: 60px;
+  height: 200px;
+  border-top: solid;
+  border-top-width: 2px;
+  border-top-color: rgb(164, 159, 159);
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.form-control{
+  margin-top: 5px;
+  width: 290px;
+  border-style: solid;
+}
+
+.buttondropdown{
+  width: 290px;
+}

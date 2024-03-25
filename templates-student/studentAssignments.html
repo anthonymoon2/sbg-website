@@ -1,0 +1,24 @@
+{% extends "studentbase.html" %}
+
+{% block navActive %}
+<ul class="navbar-nav mr-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="/student/studentHome">Student Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/entry/logout">Logout</a>
+  </li>
+</ul>
+{% endblock %}
+
+{% block content %}
+  <h1 class="student-assignments-header">Assignments</h1> 
+
+  <div class="assignments-container">
+    <h5>Assignment 1</h5>
+  </div>
+
+  <div class="assignments-container">
+    <h5>Assignment 2</h5>
+  </div>
+{% endblock %}

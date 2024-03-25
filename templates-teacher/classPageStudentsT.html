@@ -1,0 +1,77 @@
+{% extends "classPageBaseT.html" %}
+
+{% block content %}
+<div class="singular-class-container">
+  <div class="singular-class-header">
+    <h2>Students</h2>
+  </div>
+
+  <div class="class-students-container">
+    <h5>Add Student to Class</h5>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle form-control" type="button" id="dropdownMenuButtonAdd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Choose Student
+      </button>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonAdd">
+        {% for stu in allStudents%}
+        <a class="dropdown-item dropdown-item-add" href="#" student-id="{{ stu.id }}">{{ stu.name }}</a>
+        {% endfor %}
+      </div>
+
+      <form class="add-button" id="addStudentForm" method="POST" action="{{ url_for('teacherClass.classPageStudentsT', class_id=selectedClass.id) }}">
+        <input type="hidden" name="studentIdToAdd" id="studentIdToAdd">
+        <input type="hidden" name="action" value="addStudentToClass">
+        <button type="submit" class="btn btn-success form-control">Add Student</button>
+      </form>  
+    </div>
+  </div>
+
+  <div class="class-students-container">
+    <h5>Delete Student from Class</h5>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle form-control" type="button" id="dropdownMenuButtonDelete" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Choose Student
+      </button>
+
+      <div class="dropdown-menu " aria-labelledby="dropdownMenuButtonDelete">
+        {% for stu in allCurrentStudents%}
+        <a class="dropdown-item dropdown-item-delete" href="#" student-id="{{ stu.id }}">{{ stu.name }}</a>
+        {% endfor %}
+      </div>
+      
+      <form class="delete-button" id="deleteStudentForm" method="POST" action="{{ url_for('teacherClass.classPageStudentsT', class_id=selectedClass.id) }}">
+        <input type="hidden" name="studentIdToDelete" id="studentIdToDelete">
+        <input type="hidden" name="action" value="deleteStudentFromClass">
+        <button type="submit" class="btn btn-danger form-control">Delete Student</button>
+      </form> 
+    </div>
+  </div>
+
+  <div class="class-students-container">
+    <h5>Current Students</h5>
+    {% if allCurrentStudents %} 
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for stu in allCurrentStudents %}
+            <tr>
+              <th scope="row">{{ loop.index }}</th>
+              <td>{{ stu.name }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No students found.</p>
+    {% endif %}
+  </div>
+  
+  
+</div>
+{% endblock %}
